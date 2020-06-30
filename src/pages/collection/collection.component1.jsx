@@ -1,8 +1,8 @@
-//THIS FILES SHOWS US HOW TO USE CONTEXTAPI USAGE METHOD 2 (EASIER/BETTER WAY)
+//THIS FILES SHOWS US HOW TO USE CONTEXTAPI USAGE METHOD 1
 //PLEASE CHECK THE OTHER FILES IN THE SAME DIRECTORY
 //SHOWING OTHER METHODS HOW TO USE CONTEXTAPI
 
-import React, { useContext } from "react";
+import React from "react";
 //import { connect } from "react-redux";
 
 import CollectionItem from "../../components/collection-item/collection-item.component";
@@ -14,18 +14,24 @@ import "./collection.styles.scss";
 
 //const CollectionPage = ({ collection }) => {
 const CollectionPage = ({ match }) => {
-  const collections = useContext(CollectionsContext);
-  const collection = collections[match.params.collectionId];
-  const { title, items } = collection;
+  // const { title, items } = collection;
   return (
-    <div className="collection-page">
-      <h2 className="title">{title}</h2>
-      <div className="items">
-        {items.map((item) => (
-          <CollectionItem key={item.id} item={item} />
-        ))}
-      </div>
-    </div>
+    <CollectionsContext.Consumer>
+      {(collections) => {
+        const collection = collections[match.params.collectionId];
+        const { title, items } = collection;
+        return (
+          <div className="collection-page">
+            <h2 className="title">{title}</h2>
+            <div className="items">
+              {items.map((item) => (
+                <CollectionItem key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+        );
+      }}
+    </CollectionsContext.Consumer>
   );
 };
 

@@ -13,3 +13,8 @@ const CartContext = createContext({
 //this context
 
 export default CartContext;
+
+
+//At the initial intro of contextAPI into our app, we have used this file.
+//But later, we have used cart.provider.js
+//In the provider CartContext defined more beautifully

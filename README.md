@@ -1,6 +1,14 @@
 # react-context-lesson
 We are going to replace our local state management from redux to the new context API. This repository is our application before we introduced sagas to handle our asynchronous code, which is a good starting point to make the appropriate changes!
 
+# "context" & "provider" folders under the "src" created for contextAPI, not for the redux
+If you want to see the usage of contextAPI, check these folders and the files listed below:
+- App.js
+- collection.component.js
+- 
+- cart-icon.component.js
+- header.component.js
+
 # How to fork and clone
 
 One quick note about cloning this project. If you wish to make commits and push the code up after cloning this repo, you should fork the project first. In order to own your own copy of this repository, you have to fork it so you get your own copy on your own profile!

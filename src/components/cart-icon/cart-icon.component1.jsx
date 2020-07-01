@@ -7,15 +7,13 @@ import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 
-//import CartContext from "../../contexts/cart/cart.context";
-import {CartContext} from "../../providers/cart/cart.provider";
+import CartContext from "../../contexts/cart/cart.context";
 
 import "./cart-icon.styles.scss";
 
 //const CartIcon = ({ toggleCartHidden, itemCount }) => {
 const CartIcon = ({ itemCount }) => {
-  const { toggleHidden } = useContext(CartContext);  
-  //the line above works for both methods (importing CartContext from 1.contexts, 2.providers )
+  const { toggleHidden } = useContext(CartContext);
   return (
     //<div className='cart-icon' onClick={toggleCartHidden}>
     <div className="cart-icon" onClick={toggleHidden}>

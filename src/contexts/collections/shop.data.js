@@ -1,3 +1,5 @@
+//THIS FILE COPIED FROM /src/redux/shop/shop.data.js (AS IS)
+
 const SHOP_DATA = {
   hats: {
     id: 1,

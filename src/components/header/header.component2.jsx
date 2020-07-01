@@ -1,23 +1,22 @@
-//CartProvider used!
-//check other versions for usage of CartContext
+//CartContext used!
+//check other versions for usage of CartProvider
 
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-//import { connect } from "react-redux";
-//import { createStructuredSelector } from "reselect";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-//import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
 //import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import CurrentUserContext from "../../contexts/current-user/current-user.context";
 
-//import CartContext from "../../contexts/cart/cart.context";
-import {CartContext} from "../../providers/cart/cart.provider";
+import CartContext from "../../contexts/cart/cart.context";
 
 import "./header.styles.scss";
 
@@ -25,10 +24,8 @@ import "./header.styles.scss";
 //const Header = ({ hidden }) => {
 const Header = () => {
   const currentUser = useContext(CurrentUserContext);
-  //the 2 lines below moved to the "/src/providers/cart/cart.provider.js" 
-  // const [hidden, setHidden] = useState(true);
-  // const toggleHidden = () => setHidden(!hidden);
-  const {hidden} = useContext(CartContext);
+  const [hidden, setHidden] = useState(true);
+  const toggleHidden = () => setHidden(!hidden);
 
   return (
     <div className="header">
@@ -51,21 +48,18 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
-        {/* <CartContext.Provider value={{hidden, toggleHidden}}> */}
+        <CartContext.Provider value={{hidden, toggleHidden}}>
           <CartIcon />
-        {/* </CartContext.Provider> */}
+        </CartContext.Provider>
       </div>
       {hidden ? null : <CartDropdown />}
     </div>
   );
 };
 
-/*
 const mapStateToProps = createStructuredSelector({
   //currentUser: selectCurrentUser,
   hidden: selectCartHidden,
 });
-*/
 
-//export default connect(mapStateToProps)(Header);
-export default Header;
+export default connect(mapStateToProps)(Header);
